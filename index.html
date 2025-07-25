@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAK'D Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: linear-gradient(to bottom right, #f3f3f3, #e0e0e0);
+      --bg-dark: linear-gradient(to bottom right, #121212, #1e1e1e);
+      --text-light: #111;
+      --text-dark: #f3f3f3;
+      --accent: #0095c8;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-light);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-light);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    h1 {
+      font-size: 6vw;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: inherit;
+      letter-spacing: 1px;
+    }
+
+    #typewriter {
+      display: inline-block;
+      border-right: 2px solid var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 1.8s steps(30, end), blink 0.75s step-end infinite;
+      font-size: 6vw;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .email-button {
+      animation-delay: 2.5s;
+      background-color: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-size: 1.3vw;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    p {
+      font-size: 1.5vw;
+      color: inherit;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      animation-delay: 2.0s;
+    }
+
+    
+
+    .email-button:hover {
+      background-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .email-icon {
+      font-size: 1.4vw;
+    }
+
+    .toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+
+    .toggle:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .icon {
+      font-size: 1.2rem;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @media (max-width: 768px) {
+      #typewriter {
+        font-size: 10vw;
+      }
+      p, .email-button {
+        font-size: 4.5vw;
+      }
+      .email-icon {
+        font-size: 5vw;
+      }
+    }
+      @keyframes flashFade {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle" onclick="toggleDarkMode()">
+  <span class="icon" id="theme-icon">🌙</span> <span id="theme-label">Toggle Dark Mode</span>
+</button>
+  <h1><span id="typewriter">BAK'D <span class="highlight">Digital</span></span></h1>
+  <p>A digital identity. Minimal. Intentional.</p>
+  <a href="mailto:hello@bakd.ch" class="email-button">
+  <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+  </svg>
+  <span>hello@bakd.ch</span>
+</a>
+
+  <script>
+  // Load dark mode preference on startup
+  window.addEventListener('DOMContentLoaded', () => {
+    const icon = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀️';
+      label.textContent = 'Toggle Light Mode';
+    } else {
+      icon.textContent = '🌙';
+      label.textContent = 'Toggle Dark Mode';
+    }
+  });
+
+  function toggleDarkMode() {
+    const icon = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+      icon.textContent = '☀️';
+      label.textContent = 'Toggle Light Mode';
+    } else {
+      localStorage.setItem('theme', 'light');
+      icon.textContent = '🌙';
+      label.textContent = 'Toggle Dark Mode';
+    }
+  }
+  // Easter Egg: B-A-K-D
+  const secretCode = ['b','a','k','d'];
+  let inputBuffer = [];
+
+  window.addEventListener('keydown', (e) => {
+    inputBuffer.push(e.key.toLowerCase());
+    if (inputBuffer.length > 4) inputBuffer.shift();
+    if (inputBuffer.join('') === secretCode.join('')) {
+      showEasterEgg();
+    }
+  });
+
+  function showEasterEgg() {
+  glitchTypewriter();
+  const quotes = [
+    "There is no cloud, just other people's computers.",
+    "It works on my machine.",
+    "99 little bugs in the code...",
+    "BAK'D is not a bug, it's a feature.",
+    "Commit. Push. Pray."
+  ];
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  const egg = document.createElement('div');
+  egg.innerHTML = `
+    <div style="font-size: 2rem;">🚀 Welcome to <strong>BAK'D Mode</strong></div>
+    <div style="margin-top: 0.5rem; font-size: 1rem; opacity: 0.85;">You're not just baked. You're elevated.</div>
+    <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">\"${randomQuote}\"</div>
+  `;
+  egg.style.position = 'fixed';
+  egg.style.bottom = '5%';
+egg.style.top = 'auto';
+egg.style.transform = 'translateX(-50%)';
+  egg.style.left = '50%';
+  egg.style.transform = 'translateX(-50%)';
+  egg.style.background = 'var(--accent)';
+  egg.style.color = '#fff';
+  egg.style.padding = '1.5rem 2.5rem';
+  egg.style.borderRadius = '12px';
+  egg.style.fontWeight = 'bold';
+  egg.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
+  egg.style.zIndex = '100';
+  egg.style.textAlign = 'center';
+  egg.style.animation = 'fadeInUp 0.6s ease-out forwards';
+  document.body.appendChild(egg);
+
+  // Neon flash effect
+  const flash = document.createElement('div');
+  flash.style.position = 'fixed';
+  flash.style.top = 0;
+  flash.style.left = 0;
+  flash.style.width = '100%';
+  flash.style.height = '100%';
+  flash.style.background = 'rgba(0, 255, 255, 0.6)'
+  flash.style.zIndex = '99';
+  flash.style.pointerEvents = 'none';
+  flash.style.animation = 'flashFade 0.4s ease-out';
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 400);
+
+  setTimeout(() => egg.remove(), 5000);
+
+  
+  // Add visual glitch effect
+  document.body.style.transition = 'filter 0.2s ease';
+  document.body.style.filter = 'contrast(1.2) brightness(1.05)';
+  setTimeout(() => {
+    document.body.style.filter = 'none';
+  }, 400);
+
+    // Play subtle sound
+  
+  // const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.wav');
+  // audio.play();
+    
+}
+
+function glitchTypewriter() {
+  const el = document.getElementById('typewriter');
+  const original = el.innerHTML;
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
+  let iterations = 0;
+  const interval = setInterval(() => {
+    el.innerHTML = original.replace(/./g, (c, i) => {
+      if (c === '<' || c === '>' || c === '/' || c === ' ') return c;
+      return Math.random() < 0.5 ? chars[Math.floor(Math.random() * chars.length)] : c;
+    });
+    iterations++;
+    if (iterations > 10) {
+      clearInterval(interval);
+      el.innerHTML = original;
+    }
+  }, 60);
+}
+</script>
+</body>
+</html>
