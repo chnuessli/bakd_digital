@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAK'D Digital</title>
+  <title>Openly Digital</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -163,14 +163,14 @@
   <button class="toggle" onclick="toggleDarkMode()">
   <span class="icon" id="theme-icon">🌙</span> <span id="theme-label">Toggle Dark Mode</span>
 </button>
-  <h1><span id="typewriter">BAK'D <span class="highlight">Digital</span></span></h1>
-  <p>A digital identity. Minimal. Intentional.</p>
-  <a href="mailto:hello@bakd.ch" class="email-button">
+  <h1><span id="typewriter">OPENLY<span class="highlight">Digital</span></span></h1>
+  <p>A digital identity. Minimal. Open.</p>
+  <a href="mailto:hello@openly.ch" class="email-button">
   <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
     <polyline points="22,6 12,13 2,6"/>
   </svg>
-  <span>hello@bakd.ch</span>
+  <span>hello@openly.ch</span>
 </a>
 
   <script>
@@ -203,7 +203,7 @@
     }
   }
   // Easter Egg: B-A-K-D
-  const secretCode = ['b','a','k','d'];
+  const secretCode = ['o','p','e','n'];
   let inputBuffer = [];
 
   window.addEventListener('keydown', (e) => {
@@ -220,14 +220,14 @@
     "There is no cloud, just other people's computers.",
     "It works on my machine.",
     "99 little bugs in the code...",
-    "BAK'D is not a bug, it's a feature.",
+    "OPENLY is not a bug, it's a feature.",
     "Commit. Push. Pray."
   ];
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   const egg = document.createElement('div');
   egg.innerHTML = `
-    <div style="font-size: 2rem;">🚀 Welcome to <strong>BAK'D Mode</strong></div>
-    <div style="margin-top: 0.5rem; font-size: 1rem; opacity: 0.85;">You're not just baked. You're elevated.</div>
+    <div style="font-size: 2rem;">🚀 Welcome to <strong>OPENLY Mode</strong></div>
+    <div style="margin-top: 0.5rem; font-size: 1rem; opacity: 0.85;">You're not just openly. You're elevated.</div>
     <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">\"${randomQuote}\"</div>
   `;
   egg.style.position = 'fixed';

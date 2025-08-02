@@ -1,2 +1,2 @@
-# bakd_digital
-repo of the landing page to bak'd digital
+# openly
+repo of the landing page to openly digital
